@@ -24,5 +24,6 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  spec.add_runtime_dependency "zircon", version_string
+  spec.add_runtime_dependency     "zircon", "~> 0.0.8"
+  spec.add_development_dependency "dotenv", "~> 2.7.6"
 end
