@@ -1,4 +1,5 @@
 require "zircon"
+require "twitch_translator_bot/translator"
 
 module TwitchTranslatorBot
   class Bot
@@ -11,11 +12,12 @@ module TwitchTranslatorBot
         password: password,
         channel:  "#" + channel
       )
+      @translator = TwitchTranslatorBot::Translator.new(translate_to: ENV["TRANSLATE_TO"])
     end
 
     def run
       client.on_privmsg do |message|
-        client.privmsg(client.channel, message.body)
+        client.privmsg(client.channel, translator.translate(message.body))
       end
 
       puts ""
@@ -28,5 +30,6 @@ module TwitchTranslatorBot
 
     private
       attr_reader :client
+      attr_reader :translator
   end
 end
