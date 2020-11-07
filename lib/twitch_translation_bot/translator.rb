@@ -1,6 +1,6 @@
 require "google/cloud/translate/v2"
 
-module TwitchTranslatorBot
+module TwitchTranslationBot
   class Translator
     def initialize(translate_to:)
       @translator   = Google::Cloud::Translate::V2.new

@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    twitch_translator_bot (0.1.0)
+    twitch_translation_bot (0.1.0)
       google-cloud-translate-v2 (~> 0.2.0)
       zircon (~> 0.0.8)
 
@@ -66,7 +66,7 @@ DEPENDENCIES
   dotenv (~> 2.7.6)
   minitest (~> 5.0)
   rake (~> 12.0)
-  twitch_translator_bot!
+  twitch_translation_bot!
 
 BUNDLED WITH
    2.1.4

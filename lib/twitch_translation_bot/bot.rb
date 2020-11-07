@@ -1,7 +1,7 @@
 require "zircon"
-require "twitch_translator_bot/translator"
+require "twitch_translation_bot/translator"
 
-module TwitchTranslatorBot
+module TwitchTranslationBot
   class Bot
     def initialize(username: ENV["BOT_NAME"], password: ENV["BOT_ACCESS_TOKEN"], channel: ENV["CHANNEL_NAME"])
       @client = Zircon.new(
@@ -12,7 +12,7 @@ module TwitchTranslatorBot
         password: password,
         channel:  "#" + channel
       )
-      @translator = TwitchTranslatorBot::Translator.new(translate_to: ENV["TRANSLATE_TO"])
+      @translator = TwitchTranslationBot::Translator.new(translate_to: ENV["TRANSLATE_TO"])
     end
 
     def run

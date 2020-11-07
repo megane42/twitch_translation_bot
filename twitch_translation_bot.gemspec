@@ -1,13 +1,13 @@
-require_relative "lib/twitch_translator_bot/version"
+require_relative "lib/twitch_translation_bot/version"
 
 Gem::Specification.new do |spec|
-  spec.name          = "twitch_translator_bot"
-  spec.version       = TwitchTranslatorBot::VERSION
+  spec.name          = "twitch_translation_bot"
+  spec.version       = TwitchTranslationBot::VERSION
   spec.authors       = ["megane42"]
   spec.email         = ["h.kzm.gm@gmail.com"]
   spec.summary       = "A twitch bot who can translate twitch chat."
   spec.description   = "A twitch bot who can translate twitch chat."
-  spec.homepage      = "https://github.com/megane42/twitch_translator_bot/"
+  spec.homepage      = "https://github.com/megane42/twitch_translation_bot/"
   spec.license       = "MIT"
   spec.required_ruby_version = Gem::Requirement.new(">= 2.3.0")
 

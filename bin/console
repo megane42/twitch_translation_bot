@@ -2,7 +2,7 @@
 
 require 'dotenv/load'
 require "bundler/setup"
-require "twitch_translator_bot"
+require "twitch_translation_bot"
 
 # You can add fixtures and/or initialization code here to make experimenting
 # with your gem easier. You can also use a different console, if you like.
