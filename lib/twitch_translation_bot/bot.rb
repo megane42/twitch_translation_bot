@@ -24,7 +24,7 @@ module TwitchTranslationBot
         puts "translate: #{translated_message}"
         puts ""
 
-        client.privmsg(client.channel, translated_message)
+        client.privmsg(client.channel, ":#{message.from} : #{translated_message}")
       end
 
       puts ""
