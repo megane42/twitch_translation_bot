@@ -9,7 +9,7 @@ module TwitchTranslatorBot
         use_ssl:  true,
         username: ENV["BOT_NAME"],
         password: ENV["BOT_ACCESS_TOKEN"],
-        channel:  ENV["CHANNEL_NAME"],
+        channel:  "#" + ENV["CHANNEL_NAME"],
       )
 
       client.on_message do |message|
