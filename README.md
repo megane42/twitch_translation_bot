@@ -1,40 +1,41 @@
 # TwitchTranslationBot
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/twitch_translator_bot`. To experiment with that code, run `bin/console` for an interactive prompt.
+## Feature
 
-TODO: Delete this and the text above, and describe your gem
+- Realtime Twitch chat translation from / to any language
 
-## Installation
+## Requirements
 
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'twitch_translator_bot'
-```
-
-And then execute:
-
-    $ bundle install
-
-Or install it yourself as:
-
-    $ gem install twitch_translator_bot
+- Twitch account for bot
+- OAuth token of above bot account
+  - Sign in to twitch as bot account
+  - Access https://twitchapps.com/tmi/
+  - Connect
+- API key for Google Cloud Translation API
+  - See https://translatepress.com/docs/automatic-translation/generate-google-api-key/
 
 ## Usage
 
-TODO: Write usage instructions here
+- Run following ruby script
 
-## Development
+```ruby
+require "bundler/inline"
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake test` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+gemfile do
+  gem "twitch_translation_bot", git: "https://github.com/megane42/twitch_translation_bot"
+end
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+require "twitch_translation_bot"
 
-## Contributing
+ENV["CHANNEL_NAME"]     = "megane42"      # Chatroom name (= twitch user name) where you want to translate
+ENV["BOT_NAME"]         = "megane42bot"   # Bot account name
+ENV["BOT_ACCESS_TOKEN"] = "oauth:*******" # Oauth token of bot account
+ENV["TRANSLATE_TO"]     = "ja"            # ISO 639-1 codes
+ENV["TRANSLATE_KEY"]    = "*************" # API key for google cloud translation API
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/twitch_translator_bot.
-
+TwitchTranslationBot::Bot.new.run
+```
 
 ## License
 
-The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+- [MIT](https://opensource.org/licenses/MIT)
