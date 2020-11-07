@@ -12,12 +12,8 @@ module TwitchTranslatorBot
         channel:  "#" + ENV["CHANNEL_NAME"],
       )
 
-      client.on_message do |message|
-        puts "*** `on_message` responds with all received message ***"
-        puts message.from
-        puts message.to
-        puts message.type
-        puts message.body
+      client.on_privmsg do |message|
+        client.privmsg "##{ENV["CHANNEL_NAME"]}", "test"
       end
 
       client.run!
