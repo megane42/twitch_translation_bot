@@ -25,5 +25,6 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_runtime_dependency     "zircon", "~> 0.0.8"
+  spec.add_runtime_dependency     "google-cloud-translate-v2", "~> 0.2.0"
   spec.add_development_dependency "dotenv", "~> 2.7.6"
 end
