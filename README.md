@@ -1,6 +1,8 @@
-# TwitchTranslationBot
+# Twitch Translation Bot
 
-## Feature
+![image](https://user-images.githubusercontent.com/8451003/98442856-bd2be880-214a-11eb-8068-9e0bdc9dd17a.png)
+
+## Features
 
 - Realtime Twitch chat translation from / to any language
 
