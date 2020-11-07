@@ -9,6 +9,9 @@ module TwitchTranslationBot
 
     def translate(text)
       result = @translator.translate(text.force_encoding("UTF-8"), to: translate_to)
+
+      puts "detected language: #{result.from}"
+
       result.text
     end
 

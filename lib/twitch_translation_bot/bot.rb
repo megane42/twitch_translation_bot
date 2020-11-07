@@ -17,7 +17,14 @@ module TwitchTranslationBot
 
     def run
       client.on_privmsg do |message|
-        client.privmsg(client.channel, translator.translate(message.body))
+        translated_message = translator.translate(message.body)
+
+        puts "user: #{message.from}"
+        puts "original: #{message.body}"
+        puts "translate: #{translated_message}"
+        puts ""
+
+        client.privmsg(client.channel, translated_message)
       end
 
       puts ""
