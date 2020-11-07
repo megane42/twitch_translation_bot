@@ -18,6 +18,11 @@ module TwitchTranslatorBot
         client.privmsg(client.channel, message.body)
       end
 
+      puts ""
+      puts "*** Twitch Translator Bot ***"
+      puts "Press Ctrl + C to quit"
+      puts ""
+
       client.run!
     end
 
