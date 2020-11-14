@@ -3,7 +3,7 @@ require "twitch_translation_bot/translator"
 
 module TwitchTranslationBot
   class Bot
-    def initialize(username: ENV["BOT_NAME"], password: ENV["BOT_ACCESS_TOKEN"], channel: ENV["CHANNEL_NAME"], translate_to: ENV["TRANSLATE_TO"])
+    def initialize(username: ENV["BOT_NAME"], password: ENV["BOT_ACCESS_TOKEN"], channel: ENV["CHANNEL_NAME"], target_language: ENV["TARGET_LANGUAGE"])
       @client = Zircon.new(
         server:   "irc.chat.twitch.tv",
         port:     "6697",
@@ -12,7 +12,7 @@ module TwitchTranslationBot
         password: password,
         channel:  "#" + channel
       )
-      @translator = TwitchTranslationBot::Translator.new(translate_to: translate_to)
+      @translator = TwitchTranslationBot::Translator.new(target_language: target_language)
     end
 
     def run
