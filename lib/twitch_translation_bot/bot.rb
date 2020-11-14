@@ -3,7 +3,13 @@ require "twitch_translation_bot/translator"
 
 module TwitchTranslationBot
   class Bot
-    def initialize(username: ENV["BOT_NAME"], password: ENV["BOT_ACCESS_TOKEN"], channel: ENV["CHANNEL_NAME"], target_language: ENV["TARGET_LANGUAGE"])
+    def initialize(
+          username:          ENV["BOT_NAME"],
+          password:          ENV["BOT_ACCESS_TOKEN"],
+          channel:           ENV["CHANNEL_NAME"],
+          target_language:   ENV["TARGET_LANGUAGE"],
+          fallback_language: ENV["FALLBACK_LANGUAGE"]
+        )
       @client = Zircon.new(
         server:   "irc.chat.twitch.tv",
         port:     "6697",
@@ -13,7 +19,8 @@ module TwitchTranslationBot
         channel:  "#" + channel
       )
       @translator = TwitchTranslationBot::Translator.new
-      @target_language = target_language
+      @target_language   = target_language
+      @fallback_language = fallback_language
     end
 
     def run
@@ -21,7 +28,7 @@ module TwitchTranslationBot
         username          = message.from
         original_text     = message.body
         detected_language = translator.language_of(original_text)
-        translation       = translator.translate(original_text, to: detected_language == target_language ? "en" : target_language)
+        translation       = translator.translate(original_text, to: detected_language == target_language ? fallback_language : target_language)
 
         puts "username: "          + username
         puts "original text: "     + original_text
@@ -44,5 +51,6 @@ module TwitchTranslationBot
       attr_reader :client
       attr_reader :translator
       attr_reader :target_language
+      attr_reader :fallback_language
   end
 end
