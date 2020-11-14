@@ -4,7 +4,9 @@
 
 ## Features
 
-- Realtime Twitch chat translation from / to any language
+- Realtime Twitch chat translation from...
+  - any language to `TARGET_LANGUAGE`
+  - and `TARGET_LANGUAGE` to English
 
 ## Requirements
 

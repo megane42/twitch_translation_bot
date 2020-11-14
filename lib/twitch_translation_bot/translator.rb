@@ -2,17 +2,16 @@ require "google/cloud/translate/v2"
 
 module TwitchTranslationBot
   class Translator
-    def initialize(target_language:)
-      @translator   = Google::Cloud::Translate::V2.new
-      @target_language = target_language
+    def initialize
+      @translator = Google::Cloud::Translate::V2.new
     end
 
-    def translate(text)
-      result = @translator.translate(text.force_encoding("UTF-8"), to: target_language)
+    def language_of(text)
+      translator.detect(text.force_encoding("UTF-8")).language
+    end
 
-      puts "detected language: #{result.from}"
-
-      result.text
+    def translate(text, to:)
+      translator.translate(text.force_encoding("UTF-8"), to: to).text
     end
 
     private

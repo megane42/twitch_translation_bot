@@ -12,19 +12,24 @@ module TwitchTranslationBot
         password: password,
         channel:  "#" + channel
       )
-      @translator = TwitchTranslationBot::Translator.new(target_language: target_language)
+      @translator = TwitchTranslationBot::Translator.new
+      @target_language = target_language
     end
 
     def run
       client.on_privmsg do |message|
-        translated_message = translator.translate(message.body)
+        username          = message.from
+        original_text     = message.body
+        detected_language = translator.language_of(original_text)
+        translation       = translator.translate(original_text, to: detected_language == target_language ? "en" : target_language)
 
-        puts "user: #{message.from}"
-        puts "original: #{message.body}"
-        puts "translate: #{translated_message}"
+        puts "username: "          + username
+        puts "original text: "     + original_text
+        puts "detected language: " + detected_language
+        puts "translation: "       + translation
         puts ""
 
-        client.privmsg(client.channel, ":#{message.from} : #{translated_message}")
+        client.privmsg(client.channel, ":#{username} : #{translation}")
       end
 
       puts ""
@@ -38,5 +43,6 @@ module TwitchTranslationBot
     private
       attr_reader :client
       attr_reader :translator
+      attr_reader :target_language
   end
 end
