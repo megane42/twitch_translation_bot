@@ -26,6 +26,7 @@
 require "bundler/inline"
 
 gemfile do
+  source "https://rubygems.org"
   gem "twitch_translation_bot", git: "https://github.com/megane42/twitch_translation_bot"
 end
 
